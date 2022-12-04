@@ -14,17 +14,20 @@ function PostsList() {
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true); // More posts to load ?
 
+    // automatically identify the loalhost
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
     // fetch posts
     useEffect(() => {
       setLoading(true);
-      fetch(`http://localhost:3000/api/posts?page=${page}&limit=10`)
+      fetch(`${API_URL}/api/posts?page=${page}&limit=10`)
         .then(res => res.json())
         .then(data =>{
             setPosts(p => [...p, ...data]); // Add new posts to the existing ones
             setHasMore(data.length === 10) // If we have 10 posts, there might be more
         });
         setLoading(false); // We are done loading
-    }, [page]); // When the page changes, we fetch new posts
+    }, [page,API_URL]); // When the page changes, we fetch new posts
 
     // handle scroll
     const handleLoadMore = () => {

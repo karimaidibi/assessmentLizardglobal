@@ -14,15 +14,18 @@ const PostDetail = () => {
     const [post, setPost] = useState({});
     const [author, setAuthor] = useState({});
 
+    // automatically identify the loalhost
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
     // fetch post
     useEffect(() => {
-      fetch(`http://localhost:3000/api/posts/${id}`)
+      fetch(`${API_URL}/api/posts/${id}`)
         .then(res => res.json())
         .then(data =>{
             setPost(data);
             setAuthor(data.author); // retreivei the author
         });
-    }, [id]); // Fetch the post when the id changes
+    }, [id,API_URL]); // Fetch the post when the id changes
 
   // render UI
   return (
