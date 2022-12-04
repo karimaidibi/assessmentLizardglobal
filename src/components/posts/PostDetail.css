@@ -1,0 +1,27 @@
+.ProduitsDiv{
+margin : 20px;
+}
+
+img{
+padding: auto;
+height: 50%;
+width: 50%;
+}
+
+.box{
+text-align: center;
+}
+
+.price{
+text-align: center;
+padding-top: 30px;
+}
+
+ul{
+padding: 10px;
+}
+
+.boutonDark{
+background-color: black;
+color: white
+}
